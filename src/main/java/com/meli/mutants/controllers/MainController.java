@@ -80,7 +80,13 @@ public class MainController {
 			
 			for (int j = 0; j < sequence.length-1; j++) {
 				
-				if (i==0 || j==0) {
+				if (i!=0 && j!=0) {
+					if (j>i)
+						clave = ""+(i-i)+(j-i);
+					else
+						clave = ""+(i-j)+(j-j);
+				}
+				else {
 					clave = ""+i+j;
 				}
 				
