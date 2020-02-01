@@ -1,6 +1,6 @@
 package com.meli.mutants.utils;
 
-import com.meli.mutants.controllers.dtos.DnaDto;
+import com.meli.mutants.dtos.DnaDto;
 
 public class DNAValidator {
 
