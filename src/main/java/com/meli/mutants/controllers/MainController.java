@@ -18,8 +18,6 @@ import com.meli.mutants.utils.MutantCheckinator;
 
 @RestController
 public class MainController {
-	//TODO: Validar que sea NxN, n==n
-	// validar: A,T,C,G
 	
     @Autowired
     private DnaDAO dnaDAO;
@@ -29,10 +27,6 @@ public class MainController {
 	
 	@RequestMapping(value = "/mutant", method= RequestMethod.POST)
 	public ResponseEntity<Boolean> checkMutant(@RequestBody DnaDto dnaSequence) {
-//		DNAValidator dnaValidator = new DNAValidator();
-//		if (!dnaValidator.validateDna(dnaSequence)) {
-//			return false;
-//		}
 		
 		String joinedSequence = String.join("", dnaSequence.dna);
 		Dna dna = new Dna(joinedSequence);
@@ -54,7 +48,7 @@ public class MainController {
 			}
 		}
 		
-		
+		//En este punto la secuencia de DNA es nueva para nuestra BD por lo que la analizo.
 		Stats stats = statsDAO.find().get(); 
 		if (stats==null) {
 			stats = new Stats();
@@ -71,7 +65,6 @@ public class MainController {
 		else {
 			return new ResponseEntity<>(false, HttpStatus.FORBIDDEN);
 		}
-		
 	}
 	
 	@RequestMapping(value = "/stats", method= RequestMethod.GET)
