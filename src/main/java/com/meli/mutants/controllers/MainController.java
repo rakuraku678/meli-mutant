@@ -26,7 +26,7 @@ public class MainController {
 //		}
 		
 		MutantCheckinator mutantCheckinator = new MutantCheckinator(dnaSequence.dna); 
-		
+		//usar obligatoriamente la firma boolean isMutant(String[] dna); 
 		if(mutantCheckinator.isMutant()) {
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}
