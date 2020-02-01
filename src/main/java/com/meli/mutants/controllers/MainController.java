@@ -34,8 +34,6 @@ public class MainController {
 //			return false;
 //		}
 		
-		MutantCheckinator mutantCheckinator = new MutantCheckinator(dnaSequence.dna);
-
 		String joinedSequence = String.join("", dnaSequence.dna);
 		Dna dna = new Dna(joinedSequence);
 		
@@ -62,7 +60,7 @@ public class MainController {
 			stats = new Stats();
 		}
 		
-		//TODO: usar obligatoriamente la firma boolean isMutant(String[] dna);		
+		MutantCheckinator mutantCheckinator = new MutantCheckinator(dnaSequence.dna);
 		boolean isMutant = mutantCheckinator.isMutant();
 		stats.storeNewValue(statsDAO,isMutant);
 		dna.storeNewValue(dnaDAO,isMutant);
