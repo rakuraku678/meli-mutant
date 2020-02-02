@@ -1,4 +1,4 @@
-package com.meli.mutants.Daos;
+package com.meli.mutants.daos;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -8,13 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.meli.mutants.models.Stats;
 
-
 @Repository
-public class StatsDAO extends BasicDAO<Stats, ObjectId>{
+public class StatsDAO extends BasicDAO<Stats, ObjectId> {
 
-    @Autowired
-    protected StatsDAO(Datastore ds) {
-        super(ds);
-    }
+	@Autowired
+	protected StatsDAO(Datastore ds) {
+		super(ds);
+	}
 
 }

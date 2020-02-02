@@ -14,7 +14,6 @@ import com.mongodb.MongoClientURI;
 @Configuration
 public class MongoConfiguration {
 
-
     @Value("${mongo.endpoints}")
     private String mongoEndpoint;
 
