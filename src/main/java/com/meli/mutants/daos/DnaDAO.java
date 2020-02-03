@@ -19,4 +19,8 @@ public class DnaDAO extends BasicDAO<Dna, ObjectId> {
 	public Dna findBySequence(String sequence) {
 		return createQuery().field("sequence").equal(sequence).get();
 	}
+	
+	public void deleteAll() {
+		deleteByQuery(createQuery());
+	}
 }

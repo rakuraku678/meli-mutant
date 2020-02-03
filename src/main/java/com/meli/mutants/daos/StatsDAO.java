@@ -16,4 +16,8 @@ public class StatsDAO extends BasicDAO<Stats, ObjectId> {
 		super(ds);
 	}
 
+	public void deleteAll() {
+		deleteByQuery(createQuery());	
+	}
+
 }

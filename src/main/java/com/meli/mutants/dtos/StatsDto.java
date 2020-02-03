@@ -15,4 +15,9 @@ public class StatsDto {
 		else
 			this.ratio = (float) this.count_mutant_dna / this.count_human_dna;
 	}
+	
+	public StatsDto() {
+
+	}
+	
 }

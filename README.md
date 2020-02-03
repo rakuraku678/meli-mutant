@@ -3,7 +3,7 @@
 - [Ambiente](#ambiente)
 - [Instrucciones](#Instrucciones)
 - [URLs](#URLs)
-
+- [Tests](#Tests)
 
 ## Asumo
 Leyendo el enunciado asumo que se recibe **ya validada** una matriz de nXn y que las letras son (A,T,C,G), por lo que en este código esas dos validaciones no las hago. 
@@ -26,3 +26,9 @@ mvn spring-boot:run
 2. **Local**
 [localhost:8080/](localhost:8080/)
 
+## Tests
+La verdad nunca tuve oportunidad de trabajar con tests por lo que no creo cumplir el code coverage pedido, hice unos tests básicos probando los dos casos en el endpoint de **/mutant** y su posterior test para el endpoint de **/stats**. 
+El comando para correr los tests es:
+```
+mvn test -Dspring.profiles.active=test
+```
