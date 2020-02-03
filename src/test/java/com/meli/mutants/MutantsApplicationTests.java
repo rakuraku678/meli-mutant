@@ -20,6 +20,7 @@ import com.meli.mutants.daos.DnaDAO;
 import com.meli.mutants.daos.StatsDAO;
 import com.meli.mutants.dtos.DnaDto;
 import com.meli.mutants.dtos.StatsDto;
+import com.meli.mutants.models.Dna;
 
 import junit.framework.Assert;
 
@@ -40,6 +41,7 @@ class MutantsApplicationTests {
 	void contextLoads() throws URISyntaxException, ParseException {
 
 		String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
+		String keyDna = String.join("", dna);
 		DnaDto dnaDto = new DnaDto(dna);
 
 		String[] dna2 = { "CTGCAA", "CAGTGC", "TTATGT", "AGAAGG", "CGCCTA", "TCACTG" };
@@ -72,7 +74,10 @@ class MutantsApplicationTests {
 		ResponseEntity<StatsDto> result3 = restTemplate.getForEntity(uri2, StatsDto.class);
 		Assert.assertEquals(result3.getBody().count_human_dna, 1);
 		Assert.assertEquals(result3.getBody().count_mutant_dna, 1);
+		
+		Dna dnaInBd = dnaDAO.findBySequence(keyDna);
 
+		Assert.assertNotNull(dnaInBd);
 		dnaDAO.deleteAll();
 		statsDAO.deleteAll();
 	}
