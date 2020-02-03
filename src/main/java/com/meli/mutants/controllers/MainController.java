@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.meli.mutants.daos.DnaDAO;
 import com.meli.mutants.daos.StatsDAO;
 import com.meli.mutants.dtos.DnaDto;
-import com.meli.mutants.dtos.StatsDto;
 import com.meli.mutants.models.Dna;
 import com.meli.mutants.models.Stats;
 import com.meli.mutants.utils.MutantCheckinator;
@@ -29,17 +28,10 @@ public class MainController {
 	public ResponseEntity<Boolean> checkMutant(@RequestBody DnaDto dnaSequence) {
 
 		String joinedSequence = String.join("", dnaSequence.dna);
-		Dna dna = new Dna(joinedSequence);
 
-		try {
-			dnaDAO.save(dna);
-		} catch (Exception e) {
-			if (!e.getMessage().contains("duplicate key error collection")) {
-				e.printStackTrace();
-				return new ResponseEntity<>(true, HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-			// En este punto ya existe esa secuencia de dna en bd y no lo checkeo
-			dna = dnaDAO.findBySequence(joinedSequence);
+		Dna dna = dnaDAO.findBySequence(joinedSequence);
+		//si existe un dna no lo chequeo solo devuelvo el resultado
+		if (dna != null) {
 			if (dna.isMutant()) {
 				return new ResponseEntity<>(true, HttpStatus.OK);
 			} else {
@@ -47,6 +39,8 @@ public class MainController {
 			}
 		}
 
+		dna = new Dna(joinedSequence);
+		
 		// En este punto la secuencia de DNA es nueva para nuestra BD por lo que la
 		// analizo.
 		Stats stats = statsDAO.find().get();
@@ -66,12 +60,4 @@ public class MainController {
 		}
 	}
 
-	@RequestMapping(value = "/stats", method = RequestMethod.GET)
-	public StatsDto showStats() {
-		Stats stats = statsDAO.find().get();
-		if (stats == null) {
-			stats = new Stats();
-		}
-		return new StatsDto(stats);
-	}
 }
