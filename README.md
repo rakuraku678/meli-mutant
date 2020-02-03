@@ -27,7 +27,7 @@ mvn spring-boot:run
 [localhost:8080/](localhost:8080/)
 
 ## Tests
-La verdad nunca tuve oportunidad de trabajar con tests por lo que no creo cumplir el code coverage pedido, hice unos tests básicos probando los dos casos en el endpoint de **/mutant** y su posterior test para el endpoint de **/stats**. 
+La verdad nunca tuve oportunidad de trabajar con tests por lo que no creo cumplir el code coverage pedido, hice unos tests básicos probando los dos casos en el endpoint de **/mutant** y su posterior test para el endpoint de **/stats**. Corren contra otra BD distinta de la productiva.
 El comando para correr los tests es:
 ```
 mvn test -Dspring.profiles.active=test
