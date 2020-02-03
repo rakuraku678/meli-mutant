@@ -24,10 +24,11 @@ mvn spring-boot:run
 [https://meli-challenge-diego-chiari.herokuapp.com/](https://meli-challenge-diego-chiari.herokuapp.com/)
 
 2. **Local**
-[localhost:8080/](localhost:8080/)
+[http://localhost:8080/](http://localhost:8080/)
 
 ## Tests
-La verdad nunca tuve oportunidad de trabajar con tests por lo que no creo cumplir el code coverage pedido, hice unos tests básicos probando los dos casos en el endpoint de **/mutant** y su posterior test para el endpoint de **/stats**. Corren contra otra BD distinta de la productiva.
+La verdad nunca tuve oportunidad de trabajar con tests por lo que no creo cumplir el code coverage pedido, hice unos tests básicos probando los dos casos en el endpoint de **/mutant** y su posterior test para el endpoint de **/stats**. También que se hayan guardado los datos en la BD.
+Corren contra otra BD distinta de la productiva.
 El comando para correr los tests es:
 ```
 mvn test -Dspring.profiles.active=test
